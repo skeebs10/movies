@@ -5,7 +5,7 @@ export default function App(props) {
 	const [query, updateQuery] = useState({
 		baseURL: 'http://www.omdbapi.com/?',
 		apiKey: 'apikey=' + 'b5563b0',
-		option: '&t=',
+		option: '&s=',
 		title: '',
 		searchURL: ''
 	});
@@ -23,7 +23,7 @@ export default function App(props) {
 					updateQuery({
 						baseURL: 'http://www.omdbapi.com/?',
 						apiKey: 'apikey=' + '8d432cb5',
-						option: '&t=',
+						option: '&s=',
 						title: '',
 						searchURL: ''
 					});
@@ -48,31 +48,19 @@ export default function App(props) {
 	};
 	return (
 		<div className="Page-wrapper">
-			<h2>Ruth App</h2>
-			<h2>{name}</h2>
+			<h1>Netflix and Chill</h1>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="title"> Title</label>
+				<label htmlFor="title">Title</label>
 				<input
 					id="title"
 					type="text"
 					value={query.title}
 					onChange={handleChange}
 				/>
-				<input type="submit" value="Find Movie Info" />
+				<input type="submit" value="Search Movie" />
 			</form>
-			<div className={'Page'}>
-				{Object.keys(movie).length ? (
-					<MovieInfo
-						movie={movie}
-						obj={{
-							foo: 'bar',
-							you: 'are cool'
-						}}
-					/>
-				) : (
-					''
-				)}
-			</div>
+			<div className={'Page'}></div>
+			{Object.keys(movie).length ? <MovieInfo movie={movie} /> : ''}
 		</div>
 	);
 }
